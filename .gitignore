@@ -1,0 +1,31 @@
+# ROS 2 / colcon
+build/
+install/
+log/
+.colcon/
+ros2_ws/build/
+ros2_ws/install/
+ros2_ws/log/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# C/C++ build
+*.o
+*.a
+*.so
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+*.swp
