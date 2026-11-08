@@ -1,10 +1,15 @@
 # ROS 2 Workspace Setup
 
-## Distro policy
+## Distro and compatibility policy
 
-Lyrical is the current working preference for development. Before declaring it the supported deployment distro, verify that the chosen Ubuntu release, ROS packages, PX4 ROS 2 bridge, Nav2, Gazebo integration, and third-party drivers are available and tested together. Record the exact OS image, ROS package versions, PX4 version, and simulator version in the project's compatibility matrix.
+ROS 2 Lyrical Luth is an LTS release, but the availability of ROS packages does not by itself establish compatibility of every robot stack. The ROS release documentation lists Lyrical as an LTS release supported until May 2031. PX4's current ROS 2 guide has recommended ROS 2 Jazzy on Ubuntu 24.04 as its supported/recommended platform. Therefore:
 
-Do not mix ROS distributions in one shell or source multiple distro setup files into the same environment.
+- Keep Lyrical as the requested development preference for the general ROS 2 workspace.
+- Make PX4-on-Lyrical a compatibility spike and explicit release gate before committing to the UAV flight stack.
+- If PX4 dependencies or simulator integration are not supported on Lyrical, evaluate a separate Jazzy/Ubuntu 24.04 development container or machine for the PX4 toolchain rather than mixing ROS distributions in one shell.
+- Record tested ROS distro, Ubuntu version, PX4 tag, simulator version, middleware, and package versions in the compatibility matrix.
+
+References: [ROS 2 Lyrical Luth release](https://github.com/ros2/ros2_documentation/blob/rolling/source/Releases/Release-Lyrical-Luth.rst) · [PX4 ROS 2 guide](https://docs.px4.io/main/en/ros/ros2_comm).
 
 ## Create the workspace
 
