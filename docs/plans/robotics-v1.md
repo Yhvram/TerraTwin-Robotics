@@ -73,3 +73,5 @@ This is a planning estimate, not a delivery commitment; hardware lead times, com
 ## Definition of done
 
 A feature is done when it builds in the documented environment, has relevant automated or reproducible tests, documents units/frames/QoS/parameters, reports diagnostics and failure modes, and has no unresolved safety-critical issue. Physical autonomy requires its own test sign-off.
+
+
