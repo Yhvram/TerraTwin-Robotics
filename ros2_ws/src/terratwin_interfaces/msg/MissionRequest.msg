@@ -10,5 +10,5 @@ uint8 platform
 string field_id
 string operation
 builtin_interfaces/Time expires_at
-terratwin_interfaces/MissionWaypoint[] waypoints
+MissionWaypoint[] waypoints
 float32 max_speed_mps
