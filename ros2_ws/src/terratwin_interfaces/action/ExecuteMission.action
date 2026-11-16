@@ -1,0 +1,8 @@
+# Goal
+terratwin_interfaces/MissionRequest request
+---
+# Result
+terratwin_interfaces/MissionResult result
+---
+# Feedback
+terratwin_interfaces/MissionFeedback feedback
