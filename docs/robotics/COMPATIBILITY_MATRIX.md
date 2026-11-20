@@ -8,7 +8,7 @@ Last apt check: 2026-11-20, Ubuntu 26.04 (resolute) in a VirtualBox VM, ROS apt 
 
 | Component | Role | Status | apt version (2026-11-20) | Notes |
 |---|---|---|---|---|
-| `ros-base` | Base distro | Installable | 0.13.0 | Ubuntu 26.04 |
+| `ros-base` | Base distro | Verified | 0.13.0 | Workspace builds and passes tests, see log below |
 | `ros2-control` | Control framework | Installable | 6.10.1 | |
 | `ros2-controllers` | `diff_drive_controller` | Installable | 6.9.0 | `publish_rate` removed; use `tf_frame_prefix` |
 | `gz-ros2-control` | Gazebo to ros2_control | Installable | 3.0.9 | Jetty only |
@@ -25,7 +25,15 @@ Last apt check: 2026-11-20, Ubuntu 26.04 (resolute) in a VirtualBox VM, ROS apt 
 | Gazebo Jetty | Simulator | Unknown | n/a | Pulled in by `ros-gz`; confirm `gz sim --version` after install |
 | PX4 + ROS 2 | UAV | Out of scope | n/a | Separate spike (issue #7) |
 
-Installable is not Verified: nothing here has been built or run together yet. Promote rows to `Verified` as the simulation steps exercise them.
+Installable is not Verified. Only `ros-base` has been exercised so far; promote other rows to `Verified` as the simulation steps run them.
+
+## Verification log
+
+| Date | Environment | Command | Result |
+|---|---|---|---|
+| 2026-11-20 | Ubuntu 26.04 VM (VirtualBox), ROS 2 Lyrical, Python 3.14, pytest 9.0.2 | `colcon build --symlink-install && colcon test && colcon test-result --verbose` in `ros2_ws` | 8 packages built; 23 tests, 0 errors, 0 failures, 0 skipped |
+
+Lyrical-specific notes from this run: the setuptools on Ubuntu 26.04 rejects `tests_require`, so Python packages declare test dependencies with `extras_require={'test': ['pytest']}`; `ament_flake8` enforces single quotes and `ament_copyright` requires a license header on Python files.
 
 ## Known Lyrical migration points
 
