@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>terratwin_simulation</name><version>0.1.0</version>
+  <description>Gazebo field world, platform models and simulation scenarios (scaffold).</description>
+  <maintainer email="maintainers@example.com">TerraTwin Robotics Maintainers</maintainer>
+  <license>Apache-2.0</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <export><build_type>ament_cmake</build_type></export>
+</package>
