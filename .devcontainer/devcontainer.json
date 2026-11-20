@@ -1,0 +1,17 @@
+{
+  "name": "TerraTwin Robotics (ROS 2 Lyrical)",
+  "build": {
+    "dockerfile": "../docker/Dockerfile",
+    "context": "..",
+    "args": { "ROS_DISTRO": "lyrical" }
+  },
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "remoteEnv": { "ROS_DOMAIN_ID": "42" },
+  "postCreateCommand": "rosdep update || true",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python", "ms-iot.vscode-ros", "ms-vscode.cmake-tools"]
+    }
+  }
+}
