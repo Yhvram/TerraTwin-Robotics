@@ -2,22 +2,30 @@
 
 Target for the UGV simulation stack: **ROS 2 Lyrical Luth on Ubuntu 26.04 (Resolute)** with **Gazebo Jetty**.
 
-Status values: `Verified` = built/run in this project's CI or container; `Released` = listed as released for Lyrical on the ROS package index but not yet exercised here; `Unknown` = must be checked with `scripts/check_lyrical_deps.sh`.
+Status values: `Installable` = apt reports an installation candidate on the target OS (`scripts/check_lyrical_deps.sh`); `Verified` = built or run in this project's CI or container; `Unknown` = not yet checked.
 
-| Component | Role | Lyrical status | Notes |
-|---|---|---|---|
-| ROS 2 Lyrical Luth | Base distro | Released (LTS) | Ubuntu 26.04 |
-| Gazebo Jetty | Simulator | Released | Pairs with Lyrical via `ros_gz` binaries |
-| `ros_gz` | Gazebo <-> ROS bridge | Released (3.0.12) | Harmonic/Ionic are source-only on Lyrical |
-| `gz_ros2_control` | Gazebo <-> ros2_control | Released (`lyrical` branch) | Jetty only |
-| `ros2_control`, `ros2_controllers` | `diff_drive_controller` | Released (stable) | `publish_rate` removed; use `tf_frame_prefix` |
-| `robot_localization` | EKF, `navsat_transform` | Released (4.0.0) | |
-| `slam_toolbox` | Optional mapping | Released (2.10.0) | |
-| `twist_mux` | Safety `cmd_vel` gate | Released (4.5.1) | |
-| `navigation2`, `nav2_bringup` | Navigation | **Unknown** | Upstream 1.5.3 released, but an APT availability issue was reported for Ubuntu 26.04 (ros/rosdistro#53937). Run the check script; fall back to a source build if missing |
-| PX4 + ROS 2 | UAV | Out of scope for this step | Separate compatibility spike (issue #7) |
+Last apt check: 2026-11-20, Ubuntu 26.04 (resolute) in a VirtualBox VM, ROS apt source `ros2-apt-source`, command `ROS_DISTRO=lyrical bash scripts/check_lyrical_deps.sh`. All 14 packages had a candidate.
 
-Versions above come from the ROS package index and release announcements at the time of writing (2026-11-19) and must be re-verified by running the check script in the project container.
+| Component | Role | Status | apt version (2026-11-20) | Notes |
+|---|---|---|---|---|
+| `ros-base` | Base distro | Installable | 0.13.0 | Ubuntu 26.04 |
+| `ros2-control` | Control framework | Installable | 6.10.1 | |
+| `ros2-controllers` | `diff_drive_controller` | Installable | 6.9.0 | `publish_rate` removed; use `tf_frame_prefix` |
+| `gz-ros2-control` | Gazebo to ros2_control | Installable | 3.0.9 | Jetty only |
+| `ros-gz` | Gazebo to ROS bridge | Installable | 3.0.10 | Pairs with Gazebo Jetty |
+| `robot-localization` | EKF, `navsat_transform` | Installable | 3.10.0 | |
+| `slam-toolbox` | Optional mapping | Installable | 2.10.0 | |
+| `twist-mux` | Safety `cmd_vel` gate | Installable | 4.5.1 | |
+| `navigation2` | Navigation | Installable | 1.5.2 | Earlier packaging issue (ros/rosdistro#53937) does not affect this apt source |
+| `nav2-bringup` | Navigation launch | Installable | 1.5.2 | |
+| `xacro` | Robot description | Installable | 2.1.1 | |
+| `robot-state-publisher` | TF from URDF | Installable | 3.5.6 | |
+| `joint-state-publisher` | Joint states | Installable | 2.4.3 | |
+| `rviz2` | Visualization | Installable | 15.2.6 | |
+| Gazebo Jetty | Simulator | Unknown | n/a | Pulled in by `ros-gz`; confirm `gz sim --version` after install |
+| PX4 + ROS 2 | UAV | Out of scope | n/a | Separate spike (issue #7) |
+
+Installable is not Verified: nothing here has been built or run together yet. Promote rows to `Verified` as the simulation steps exercise them.
 
 ## Known Lyrical migration points
 
