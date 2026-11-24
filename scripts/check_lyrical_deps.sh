@@ -20,6 +20,7 @@ PACKAGES=(
   xacro
   robot-state-publisher
   joint-state-publisher
+  joint-state-publisher-gui
   rviz2
 )
 
